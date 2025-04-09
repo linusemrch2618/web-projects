@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
+
+body {
+    font: 1.125rem "Nunito", sans-serif;
+    color: #101010;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: url("bg.jpg") no-repeat fixed center;
+        background-size: cover;
+        animation: backgroundZoomAnimate 15s ease-in-out infinite alternate;
+    }
+}
+
+@keyframes backgroundZoomAnimate {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.25);
+    }
+}
+
+.profile-card {
+    margin: 2rem;
+    box-shadow: 0 1rem 10rem -1rem black;
+    border-radius: 4rem;
+    width: 40rem;
+    backdrop-filter: blur(4rem);
+    background-color: #ffffff20;
+    border: 0.125rem solid #ffffff40;
+    padding: 4rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    transition-property: margin, width, height, border, border-radius, box-shadow;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+
+    @media screen and (max-width: 48rem) {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    &__img img {
+        margin: auto;
+        width: 12rem;
+        height: 12rem;
+        border-radius: 6rem;
+        object-fit: cover;
+        box-shadow: 0 1rem 3rem -1rem black;
+        display: block;
+    }
+
+    &__desc {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+
+            & + div {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    &__info {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+
+        @media screen and (max-width: 36rem) {
+            gap: 2rem;
+        }
+
+        & > div {
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+
+            & > *:first-child {
+                letter-spacing: 0.25rem;
+                font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            & > *:last-child {
+                opacity: 0.75;
+                letter-spacing: 0.125rem;
+                font-size: 1rem;
+            }
+        }
+    }
+
+    &__social {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        a {
+            display: inline-flex;
+        }
+    }
+}
